@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MongoDB.Bson.Serialization.Attributes;
 
 namespace MyCar.Models
 {
     public class Car
     {
-        [Key]
+        [BsonId]
         public Guid Id { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
@@ -22,7 +22,7 @@ namespace MyCar.Models
             Eletrico = eletrico;
         }
 
-        public void Update(string marca, string modelo, string anoFabricacao, string tipoCombustivel, bool eletrico, int hodometro) 
+        public void Update(string marca, string modelo, string anoFabricacao, string tipoCombustivel, bool eletrico, int hodometro)
         {
             Marca = marca;
             Modelo = modelo;
