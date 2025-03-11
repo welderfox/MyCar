@@ -2,7 +2,7 @@
 
 namespace MyCar.Context.Configurations
 {
-    public class MyCarContext
+    public class MyCarContext : DbContext
     {
         //public string ConnectionString { get; set; } = null!;
 

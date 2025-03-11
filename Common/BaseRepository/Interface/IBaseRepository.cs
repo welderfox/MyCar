@@ -1,11 +1,11 @@
-﻿using MyCar.Common.Model;
-using MyCar.Context.Configurations;
+﻿using Microsoft.EntityFrameworkCore;
+using MyCar.Common.Model;
 
 namespace MyCar.Common.BaseRepository.Interface
 {
     public interface IBaseRepository<TModel, TContext>
         where TModel : BaseModel
-        where TContext : MyCarContext
+        where TContext : DbContext
     {
 
         #region Gets

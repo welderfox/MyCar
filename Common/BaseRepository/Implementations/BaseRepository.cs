@@ -2,14 +2,13 @@
 using Microsoft.EntityFrameworkCore.Storage;
 using MyCar.Common.BaseRepository.Interface;
 using MyCar.Common.Model;
-using MyCar.Context.Configurations;
 
 namespace MyCar.Common.BaseRepository.Implementations
 {
 
     public abstract class BaseRepository<TModel, TContext> : IBaseRepository<TModel, TContext>
             where TModel : BaseModel
-            where TContext : MyCarContext
+            where TContext : DbContext
     {
         public BaseRepository(TContext context, ILogger<BaseRepository<TModel, TContext>> logger)
         {
@@ -44,7 +43,9 @@ namespace MyCar.Common.BaseRepository.Implementations
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public async virtual Task<TModel> GetAsync(Guid id, CancellationToken cancellationToken)
-            => await Query.SingleOrDefaultAsync(w => w.Id == id, cancellationToken);
+        {
+            return await Query.SingleOrDefaultAsync(w => w.Id == id, cancellationToken);
+        }
 
         /// <summary>
         /// Retorna uma lista Ids informados
